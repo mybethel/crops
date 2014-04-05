@@ -46,6 +46,8 @@ function processFileOutput(r, params, res) {
   if (!params.size)
     return r.pipe(res);
 
+  res.writeHeader(200, {"Cache-Control": "max-age=600"});
+
   imageStream = gm(r);
 
   // Maintain aspect ratio if only provided the image width
